@@ -1,0 +1,51 @@
+$primary:#213F7D;
+$secondary: #545F7D;
+$tertiary:#39CDCC;
+$white:#FFFFFF;
+
+
+
+.tert {
+  color:$tertiary
+}
+
+.pri {
+  color: $primary
+}
+
+
+.sec {
+  color: $secondary;
+}
+
+.headerContainer {
+  background-color: $white;
+  box-sizing: border-box;
+  box-shadow: 3px 0px 20px rgba(0, 0, 0, 0.04);
+  position: fixed;
+  top: 0;
+  right: 0;
+  left:0;
+  vertical-align: middle;
+  align-items: center;
+ 
+}
+
+.inputstyle{
+  height: 50px;
+  padding: 17px 16px;
+  border: 2px solid #545f7d26;
+  color: $secondary;
+  background-color: transparent;
+  outline: none;
+  appearance: none;
+  font-size: 14px;
+}
+
+.headerInput {
+  height: 35px;
+  color: $secondary;
+  border: 1px solid $secondary;
+  font-size: 14px;
+  outline: none;
+}
