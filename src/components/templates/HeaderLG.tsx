@@ -3,7 +3,7 @@ import { Headers } from '../../assets/Headers/index.tsx'
 
 export default function HeaderLG() {
   return (
-    <div className="w-full flex justify-between items-center headerContainer px-7  py-8">
+    <div className="w-full flex justify-between items-center headerContainer px-7 py-8 fixed z-10">
       <div className="w-1/2 flex justify-between">
         <img src={Headers.Logo} />
         <div className="flex w-1/2">
@@ -13,7 +13,7 @@ export default function HeaderLG() {
             style={{
               borderRadius: "8px 0 0 8px",
               borderRight: "0",
-            //   opacity: "0.2",
+              //   opacity: "0.2",
             }}
           />
           <span
@@ -30,7 +30,9 @@ export default function HeaderLG() {
           >
             <img
               src={Headers.Search}
-              className="w-5 h-5 my-2  m-auto"
+              className="my-2.5  m-auto"
+              width="14px"
+              height="14px"
               style={{ backgroundColor: "#39CDCC" }}
             />
           </span>
@@ -38,12 +40,21 @@ export default function HeaderLG() {
       </div>
 
       <div className="w-2/6 flex justify-evenly items-center">
-        <div style={{fontSize:"16px", textDecoration:"underline"}} className="pri">Docs</div>
-        <img src={Headers.Bell} alt="bell" />
-        <div className='flex items-center justify-center'>
-        <img src={Headers.ProfilePicture} alt="profile picture" />
-        <h1 className='mx-2 pri'> Adedeji</h1>
-        <img src={Headers.DropDown}/>
+        <div
+          style={{ fontSize: "16px", textDecoration: "underline" }}
+          className="pri"
+        >
+          Docs
+        </div>
+        <img src={Headers.Bell} alt="bell"  />
+        <div className="flex items-center justify-center">
+          <img
+            src={Headers.ProfilePicture}
+            alt="profile picture"
+            
+          />
+          <h1 className="mx-2 pri font-semibold"> Adedeji</h1>
+          <img src={Headers.DropDown} />
         </div>
       </div>
     </div>

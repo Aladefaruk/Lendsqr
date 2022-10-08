@@ -2,8 +2,13 @@ $primary:#213F7D;
 $secondary: #545F7D;
 $tertiary:#39CDCC;
 $white:#FFFFFF;
+$primary-2:rgba(33, 63, 125, 0.6);
 
 
+
+.pri-2{
+  color: $primary-2;
+}
 
 .tert {
   color:$tertiary
@@ -45,7 +50,37 @@ $white:#FFFFFF;
 .headerInput {
   height: 35px;
   color: $secondary;
-  border: 1px solid $secondary;
+  border: 1px solid rgba(33, 63, 125, 0.2);
   font-size: 14px;
   outline: none;
+}
+
+.left-side {
+  width: 283px;
+  
+  overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.other-side {
+  width: calc(100% - 283px);
+  position: relative;
+  left: 283px;
+}
+
+::-webkit-scrollbar {
+  width: 1px;
+  display: none;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  width: 1px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+  width: 2px;
 }
