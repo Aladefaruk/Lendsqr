@@ -10,14 +10,15 @@ import User from "./pages/User.tsx";
 
 import GeneralDetails from "./pages/mobile/GeneralDetails.tsx";
 
+
 function App() {
   return (
     <div className="p-5">
       <Routes>
         <Route path="/" element={<Signin />} />
         <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/user" element={<User />} />
-        <Route path="/user/details" element={<GeneralDetails />} />
+        <Route path="/user:id" element={<User />} />
+        <Route path="/user:id/details" element={<GeneralDetails />} />
       </Routes>
     </div>
   );
