@@ -1,6 +1,6 @@
 import React from "react";
-import Info from "../../components/Info.tsx";
-import Template from "../../components/templates/Template.tsx";
+import Info from "../../components/Info";
+import Template from "../../components/templates/Template";
 
 const App = () => {
   const PersonalInfo = [

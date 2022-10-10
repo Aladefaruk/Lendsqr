@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
-import Box from "../components/Box.tsx";
-import { Statistics } from "../assets/statistics/index.tsx";
-import Template from "../components/templates/Template.tsx";
+import React, { useEffect } from "react";
+import Box from "../components/Box";
+import { Statistics } from "../assets/statistics/index";
+import Template from "../components/templates/Template";
 import { Link } from "react-router-dom";
 
 const App = () => {
@@ -31,15 +31,15 @@ const App = () => {
   return (
     <div className="w-full h-full my-20 lg:my-10">
       <Link to="/user:1">
-      <h1
-        className="pri font-semibold mx-5 text-center lg:text-left"
-        style={{ fontSize: "24px" }}
-      >
-        Users
-      </h1>
+        <h1
+          className="pri font-semibold mx-5 text-center lg:text-left"
+          style={{ fontSize: "24px" }}
+        >
+          Users
+        </h1>
       </Link>
       <div className="flex flex-wrap justify-around">
-        {Object.values(Statistics).map((stat, index) => (
+        {Object.values(Statistics).map((stat: Object, index: Number) => (
           <Box
             name={stat.name}
             image={stat.image}

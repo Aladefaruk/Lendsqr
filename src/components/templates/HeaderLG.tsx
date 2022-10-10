@@ -1,13 +1,13 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-import { Headers } from '../../assets/Headers/index.tsx'
+import { Headers } from '../../assets/Headers/index'
 
 export default function HeaderLG() {
   return (
     <div className="w-full flex justify-between items-center headerContainer px-7 py-8 fixed z-10">
       <div className="w-1/2 flex justify-between">
         <Link to="/">
-        <img src={Headers.Logo} />
+        <img src={Headers.Logo} alt="" />
         </Link>
         <div className="flex w-1/2">
           <input
@@ -33,6 +33,7 @@ export default function HeaderLG() {
           >
             <img
               src={Headers.Search}
+              alt=""
               className="my-2.5  m-auto"
               width="14px"
               height="14px"
@@ -47,17 +48,17 @@ export default function HeaderLG() {
           style={{ fontSize: "16px", textDecoration: "underline" }}
           className="pri"
         >
-          Docs
+          Docs  
         </div>
         <img src={Headers.Bell} alt="bell"  />
         <div className="flex items-center justify-center">
           <img
             src={Headers.ProfilePicture}
-            alt="profile picture"
+            alt="profile"
             
           />
           <h1 className="mx-2 pri font-semibold"> Adedeji</h1>
-          <img src={Headers.DropDown} />
+          <img src={Headers.DropDown}  alt=""/>
         </div>
       </div>
     </div>

@@ -60,7 +60,7 @@ const User = () => {
                 <img
                   alt=""
                   className="mx-2"
-                  src={item == 1 ? FilledStar : Star}
+                  src={item === 1 ? FilledStar : Star}
                 />
               ))}
             </div>
@@ -82,7 +82,7 @@ const User = () => {
               className="p-2 cursor-pointer"
               key={index}
               onClick={() => setTabNo(index)}
-              style={index == tabNo ? activeStyle : inactiveStyle}
+              style={index === tabNo ? activeStyle : inactiveStyle}
             >
               {tab}
             </div>

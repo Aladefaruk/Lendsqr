@@ -4,9 +4,8 @@ import Ham from '../../assets/hamburger.svg'
 import Close from '../../assets/close.svg'
 import Switch from "../../assets/template/switch.svg";
 import Drop from "../../assets/template/shuffDrop.svg";
-import Dash from "../../assets/template/dashboard.svg";
-import Tab from './Tab.tsx';
-import { Customers, Business, Settings } from "../../assets/template/index.tsx";
+import Tab from './Tab';
+import { Customers, Business, Settings } from "../../assets/template/index";
 import { Link } from 'react-router-dom';
 
 export default function HeaderSM() {
@@ -45,8 +44,6 @@ export default function HeaderSM() {
         {/* <div className="mb-11">
           <Tab image={Dash} name="Dashboard" active={tabNo} key={100} />
         </div> */}
-    
-          
           <ul>
             <li
               className="cursor-pointer py-4 text-xl flex items-center"

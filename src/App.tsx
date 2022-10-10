@@ -2,13 +2,13 @@ import React from "react";
 import "./App.scss";
 import { Routes, Route } from "react-router-dom";
 
-import Signin from "./pages/auth/signin.tsx";
+import Signin from "./pages/auth/signin";
 
-import Dashboard from "./pages/Dashboard.tsx";
+import Dashboard from "./pages/Dashboard";
 
-import User from "./pages/User.tsx";
+import User from "./pages/User";
 
-import GeneralDetails from "./pages/mobile/GeneralDetails.tsx";
+import GeneralDetails from "./pages/mobile/GeneralDetails";
 
 
 function App() {

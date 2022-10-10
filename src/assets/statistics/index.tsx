@@ -1,7 +1,9 @@
-import User from "./users.svg";
-import Active from "./active.svg";
-import Loans from "./loans.svg";
-import Savings from "./savings.svg";
+import User from "./users.svg"
+import Active from "./active.svg"
+import Loans from "./loans.svg"
+import Savings from "./savings.svg"
+
+
 export const Statistics = {
   Users: {
     name: "USERS",

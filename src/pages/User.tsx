@@ -1,14 +1,14 @@
-import React,{useState} from 'react'
-import Template from "../components/templates/Template.tsx";
+import React from 'react'
+import Template from "../components/templates/Template";
 import Back from '../assets/back.svg'
-import Details from '../components/Details.tsx'
-import Info from "../components/Info.tsx";
+import Details from '../components/Details'
+import Info from "../components/Info";
 import { Link } from 'react-router-dom';
 
 
 
 const App=()=>{
-  const [tabNo, setTabNo] = useState(0);
+  // const [tabNo, setTabNo] = useState(0);
   const Tabs = [
     "General Details",
     "Documents",
@@ -166,7 +166,7 @@ const App=()=>{
               key={index}
               style={{ borderBottom: "1px solid rgba(33, 63, 125, 0.06)" }}
             >
-              <Link to={(index==0)?`./details`:"./"}>
+              <Link to={(index===0)?`./details`:"./"}>
               <h1 className='pri'>{tab}</h1>
               </Link>
             </div>

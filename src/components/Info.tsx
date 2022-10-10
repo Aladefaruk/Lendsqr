@@ -1,6 +1,6 @@
 import React from 'react'
 
- const Info=({topic,detail})=> {
+ const Info=({topic,detail}:{topic:string,detail:string})=> {
   return (
     <div className="mx-10 my-5 sec">
       <p className=" my-3 uppercase" style={{ fontSize: "12px" }}>

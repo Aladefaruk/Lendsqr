@@ -1,10 +1,10 @@
 import React,{useState} from "react";
-import { Link } from "react-router-dom";
+
 import Switch from '../../assets/template/switch.svg';
 import Drop from '../../assets/template/shuffDrop.svg';
 import Dash from '../../assets/template/dashboard.svg';
-import Tab from "./Tab.tsx";
-import {Customers, Business,Settings} from '../../assets/template/index.tsx';
+import Tab from "./Tab";
+import {Customers, Business,Settings} from '../../assets/template/index';
 
 
 const LeftSide = () => {
@@ -31,7 +31,7 @@ const LeftSide = () => {
           <img src={Drop} alt="dropdown" />
         </div>
         <div className="mb-11">
-          <Tab image={Dash} name="Dashboard" active={tabNo} key={100} />
+          <Tab image={Dash} name="Dashboard" active={tabNo} key={100} index={100} onClick={()=>console.log('100')}/>
         </div>
       </div>
 

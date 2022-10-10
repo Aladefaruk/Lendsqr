@@ -1,7 +1,7 @@
-import React from 'react';
-import Savings from "../assets/statistics/savings.svg"
+import React from "react";
 
-export default function Box({name,image,numbers}) {
+
+export default function Box({ name, image, numbers }:{name:string,image:string,numbers:number}) {
   return (
     <div
       style={{

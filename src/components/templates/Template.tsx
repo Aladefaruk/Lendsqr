@@ -1,11 +1,10 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
-import LeftSide from './LeftSideBar.tsx';
-import HeaderLG from './HeaderLG.tsx';
-import HeaderSM from './HeaderSM.tsx';
+import LeftSide from './LeftSideBar';
+import HeaderLG from './HeaderLG';
+import HeaderSM from './HeaderSM';
 
 
-const Template=({App})=> {
+const Template=({App}:{App:Function})=> {
   return (
     <div className="">
       <div className="block">
