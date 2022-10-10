@@ -2,7 +2,7 @@ import User from "./users.svg";
 import Active from "./active.svg";
 import Loans from "./loans.svg";
 import Savings from "./savings.svg";
-export const Statistic = {
+export const Statistics = {
   Users: {
     name: "USERS",
     image: User,
@@ -14,13 +14,13 @@ export const Statistic = {
     stats: "2,453",
   },
   Loans: {
-    name: "USRS WITH LOANS",
+    name: "USERS WITH LOANS",
     image: Loans,
     stats: "12,453",
   },
   Savings: {
     name: "USERS WITH SAVINGS",
-    image: Loans,
+    image: Savings,
     stats: "102,453",
   },
 };

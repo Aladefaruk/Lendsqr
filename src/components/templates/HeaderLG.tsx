@@ -1,11 +1,14 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 import { Headers } from '../../assets/Headers/index.tsx'
 
 export default function HeaderLG() {
   return (
     <div className="w-full flex justify-between items-center headerContainer px-7 py-8 fixed z-10">
       <div className="w-1/2 flex justify-between">
+        <Link to="/">
         <img src={Headers.Logo} />
+        </Link>
         <div className="flex w-1/2">
           <input
             className="headerInput w-full px-3 sec"

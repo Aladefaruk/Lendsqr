@@ -12,7 +12,7 @@ const LeftSide = () => {
   const [tabNo, setTabNo]=useState(0)
   return (
     <div
-      className="fixed left-0 h-full left-side pt-36  items-left"
+      className="fixed  left-0 h-full left-side pt-36  items-left hidden lg:block"
       style={{
         backgroundColor: "#FFFFF",
         boxSizing: "border-box",
@@ -62,7 +62,7 @@ const LeftSide = () => {
             key={i}
             index={i + 10}
             active={tabNo}
-            onClick={() => setTabNo(i+10)}
+            onClick={() => setTabNo(i + 10)}
           />
         ))}
       </div>
@@ -78,7 +78,7 @@ const LeftSide = () => {
             key={i}
             index={i + 20}
             active={tabNo}
-            onClick={() => setTabNo(i+20)}
+            onClick={() => setTabNo(i + 20)}
           />
         ))}
       </div>

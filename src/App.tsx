@@ -1,18 +1,24 @@
 import React from "react";
 import "./App.scss";
 import { Routes, Route } from "react-router-dom";
-import Template from "./components/templates/Template.tsx";
+
 import Signin from "./pages/auth/signin.tsx";
-import HeaderLG from "./components/templates/HeaderLG.tsx";
-import Box from "./components/Box.tsx";
+
+import Dashboard from "./pages/Dashboard.tsx";
+
+import User from "./pages/User.tsx";
+
+import GeneralDetails from "./pages/mobile/GeneralDetails.tsx";
+
 
 function App() {
   return (
     <div className="p-5">
       <Routes>
-        <Route path="/" element={<Box/>} />
-        {/* <Route path="/" element={<Signin/>} /> */}
-        {/* <Route path="/" element={<Template />} /> */}
+        <Route path="/" element={<Signin />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/user:id" element={<User />} />
+        <Route path="/user:id/details" element={<GeneralDetails />} />
       </Routes>
     </div>
   );

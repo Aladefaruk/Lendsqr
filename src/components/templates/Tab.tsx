@@ -1,9 +1,6 @@
 import React, { useState } from "react";
 
 export default function Tab({image,active,name,index,onClick}) {
-    console.log(index)
-    console.log(active)
-
     const activeStyle = {
       color: "#213F7D",
       borderLeft: "3px solid #39CDCC",

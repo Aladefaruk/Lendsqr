@@ -2,10 +2,11 @@ import React from 'react'
 import Logo from '../../assets/Logo.svg'
 import HeroImage from '../../assets/Hero.svg'
 import '../../App.scss'
+import { Link } from 'react-router-dom'
 
 const Signin=()=> {
   return (
-    <div className="w-full flex flex-wrap pt-20 mx-auto ">
+    <div className="w-full ave flex flex-wrap pt-20 mx-auto ">
       <div className="w-full lg:w-1/2">
         <div className=" ml-20">
           <img src={Logo} alt="Logo" className="mb-20" />
@@ -16,12 +17,12 @@ const Signin=()=> {
         <div className="w-full ">
           <div className="mb-10 ">
             <h2
-              style={{ fontSize: "40px", color: "#213F7D" }}
-              className="font-bold"
+              style={{ fontSize: "40px", color: "#213F7D" ,fontWeight:"700" }}
+              className="font-bold aveb "
             >
               Welcome!
             </h2>
-            <h4 className="pt-5 pb-6">Enter details to login.</h4>
+            <h4 className="pt-5 pb-6 sec">Enter details to login.</h4>
           </div>
           <div className="w-full lg:w-4/5">
             <input type="text" className="w-full inputstyle" placeholder='Email' />
@@ -50,12 +51,14 @@ const Signin=()=> {
               <h4 className="my-5 tert">FORGOT PASSWORD?</h4>
             </div>
           </div>
+          <Link to="/dashboard">
           <button
             className=" w-full lg:w-4/5 my-5 p-3 rounded-lg text-white "
             style={{ background: "#39CDCC",outline:"none" }}
           >
             LOG IN
           </button>
+          </Link>
         </div>
       </div>
     </div>

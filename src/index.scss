@@ -3,3 +3,27 @@
 @tailwind utilities;
 
 
+@font-face {
+    font-family: 'AvenirNext';
+    src: local('AvenirNextLTPro-Regular'), local('AvenirNextLTPro-Regular'),
+
+        url('./fonts/AvenirNextLTPro-Regular.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'AvenirNextBold';
+    src: local('AvenirNextLTPro-Bold'), local('AvenirNextLTPro-Bold'),
+
+        url('./fonts/AvenirNextLTPro-Bold.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.ave{
+    font-family: 'AvenirNext';
+}
+
+.aveb{
+    font-family: "AvenirNextBold";
+}

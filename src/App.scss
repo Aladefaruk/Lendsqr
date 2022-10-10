@@ -6,9 +6,17 @@ $primary-2:rgba(33, 63, 125, 0.6);
 
 
 
+
+body {
+  font-family:'Work Sans', sans-serif;;
+}
+
+
 .pri-2{
   color: $primary-2;
 }
+
+
 
 .tert {
   color:$tertiary
