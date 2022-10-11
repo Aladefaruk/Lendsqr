@@ -5,89 +5,147 @@ import Template from "../components/templates/Template";
 import { Link } from "react-router-dom";
 import { Space, Table, Tag } from "antd";
 import type { ColumnsType } from "antd/es/table";
+import FilterIcon from '../assets/filter.svg';
 import "antd/dist/antd.css";
 
 const App = () => {
+  const [allUsers,setAllUsers]= useState([])
+
+
+  let UsersData=allUsers.map((user,index)=>
+  {
+    return {
+    org:user.orgName,
+    userName:user.userName,
+    email:user.email,
+    phone:user.phoneNumber,
+    date:user.lastActiveDate,
+    fullUserData:user
+  }})
+
+  console.log(allUsers);
+  console.log(UsersData);
   interface DataType {
-    key: string;
-    name: string;
-    age: number;
-    address: string;
-    tags: string[];
+    // key: string;
+    org: any;
+    userName: string;
+    email: string;
+    phone: string;
+    date: string;
+    // tags: string[];
   }
 
   const columns: ColumnsType<DataType> = [
     {
-      title: "Name",
-      dataIndex: "name",
-      key: "name",
-      render: (text) => <a>{text}</a>,
-    },
-    {
-      title: "Age",
-      dataIndex: "age",
-      key: "age",
-    },
-    {
-      title: "Address",
-      dataIndex: "address",
-      key: "address",
-    },
-    {
-      title: "Tags",
-      key: "tags",
-      dataIndex: "tags",
-      render: (_, { tags }) => (
-        <>
-          {tags.map((tag) => {
-            let color = tag.length > 5 ? "geekblue" : "green";
-            if (tag === "loser") {
-              color = "volcano";
-            }
-            return (
-              <Tag color={color} key={tag}>
-                {tag.toUpperCase()}
-              </Tag>
-            );
-          })}
-        </>
+      title: (
+        <span className="flex uppercase ">
+          <span className="sec">Organization</span>{" "}
+          <img src={FilterIcon} alt="" className="mx-2" />
+        </span>
       ),
+      dataIndex: "org",
+      key: "org",
+      render: (text) => <span className="sec">{text} </span>,
     },
     {
-      title: "Action",
-      key: "action",
-      render: (_, record) => (
-        <Space size="middle">
-          <a>Invite {record.name}</a>
-          <a>Delete</a>
-        </Space>
+      title: (
+        <span className="flex uppercase ">
+          <span className="sec">Username</span>{" "}
+          <img src={FilterIcon} alt="" className="mx-2" />
+        </span>
       ),
+      dataIndex: "userName",
+      key: "userName",
+      render: (text) => <span className="sec">{text} </span>,
     },
+    {
+      title: (
+        <span className="flex uppercase ">
+          <span className="sec">Email</span>{" "}
+          <img src={FilterIcon} alt="" className="mx-2" />
+        </span>
+      ),
+      dataIndex: "email",
+      key: "email",
+      render: (text) => <span className="sec">{text} </span>,
+    },
+    {
+      title: (
+        <span className="flex uppercase ">
+          <span className="sec">PHONE NUMBER</span>{" "}
+          <img src={FilterIcon} alt="" className="mx-2" />
+        </span>
+      ),
+      dataIndex: "phone",
+      key: "phone",
+      render: (text) => <span className="sec">{text} </span>,
+    },
+    {
+      title: (
+        <span className="flex uppercase ">
+          <span className="sec">Date joined</span>{" "}
+          <img src={FilterIcon} alt="" className="mx-2" />
+        </span>
+      ),
+      dataIndex: "date",
+      key: "date",
+      
+    },
+    // {
+    //   title: "Status",
+    //   key: "status",
+    //   dataIndex: "tags",
+    //   render: (_, { tags }) => (
+    //     <>
+    //       {tags.map((tag) => {
+    //         let color = tag.length > 5 ? "geekblue" : "green";
+    //         if (tag === "loser") {
+    //           color = "volcano";
+    //         }
+    //         return (
+    //           <Tag color={color} key={tag}>
+    //             {tag.toUpperCase()}
+    //           </Tag>
+    //         );
+    //       })}
+    //     </>
+    //   ),
+    // },
+    // {
+    //   title: "Action",
+    //   key: "action",
+    //   render: (_, record) => (
+    //     <Space size="middle">
+    //       <a>Invite </a>
+    //       <a>Delete</a>
+    //     </Space>
+    //   ),
+    // },
   ];
 
-  const data: DataType[] = [
-    {
-      key: "1",
-      name: "John Brown",
-      age: 32,
-      address: "New York No. 1 Lake Park",
-      tags: ["nice", "developer"],
-    },
-    {
-      key: "2",
-      name: "Jim Green",
-      age: 42,
-      address: "London No. 1 Lake Park",
-      tags: ["loser"],
-    },
-    {
-      key: "3",
-      name: "Joe Black",
-      age: 32,
-      address: "Sidney No. 1 Lake Park",
-      tags: ["cool", "teacher"],
-    },
-  ];
+  // const data: DataType[] = [
+  //   {
+  //     key: "1",
+  //     name: "John Brown",
+  //     age: 32,
+  //     address: "New York No. 1 Lake Park",
+  //     tags: ["nice", "developer"],
+  //   },
+  //   {
+  //     key: "2",
+  //     name: "Jim Green",
+  //     age: 42,
+  //     address: "London No. 1 Lake Park",
+  //     tags: ["loser"],
+  //   },
+  //   {
+  //     key: "3",
+  //     name: "Joe Black",
+  //     age: 32,
+  //     address: "Sidney No. 1 Lake Park",
+  //     tags: ["cool", "teacher"],
+  //   },
+  // ];
   const getAllUsers = async () => {
     try {
       const res = await fetch(
@@ -98,15 +156,17 @@ const App = () => {
         }
       );
       const res_json = await res.json();
-      console.log(res_json);
+      
       if (!res.ok) {
-        console.log(res);
+        return console.log(res)
       }
+      setAllUsers(res_json)
+      
     } catch (error) {
       console.log(error);
     }
   };
-  console.log(process.env.REACT_APP_API_KEY);
+  // console.log(process.env.REACT_APP_API_KEY);
 
   useEffect(() => {
     getAllUsers();
@@ -131,7 +191,15 @@ const App = () => {
           />
         ))}
       </div>
-      <Table columns={columns} dataSource={data} />
+      <div className="lg:mx-5">
+        <Table
+          columns={columns}
+          dataSource={UsersData}
+          scroll={{ x:"700" }}
+         
+          className="w-full"
+        />
+      </div>
     </div>
   );
 };
