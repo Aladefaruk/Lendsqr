@@ -27,7 +27,7 @@ const LeftSide = () => {
             width="16px"
             height="16px"
           />
-          <p className="px-4 pri">Switch Organization</p>
+          <div className="px-4 pri">Switch Organization</div>
           <img src={Drop} alt="dropdown" />
         </div>
         <div className="mb-11">

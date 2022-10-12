@@ -220,14 +220,14 @@ const App = () => {
   }, []);
   return (
     <div className="w-full h-full my-20 lg:my-10">
-      <Link to="/user:1">
+    
         <h1
           className="pri font-semibold mx-5 text-center lg:text-left"
           style={{ fontSize: "24px" }}
         >
           Users
         </h1>
-      </Link>
+      
       <div className="flex flex-wrap justify-around">
         {Object.values(Statistics).map((stat: Object, index: Number) => (
           <Box
