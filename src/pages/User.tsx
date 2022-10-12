@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useEffect,useState} from 'react'
 import Template from "../components/templates/Template";
 import Back from '../assets/back.svg'
 import Details from '../components/Details'
@@ -9,6 +9,21 @@ import { Link } from 'react-router-dom';
 
 const App=()=>{
   // const [tabNo, setTabNo] = useState(0);
+  const [userDetails, setUserDetails] = useState({
+    profile: { avatar: "", firstName: "", lastName: "", gender: "",bvn:"" },
+    accountBalance: "",
+    accountNumber: "",
+    education: { level: "", employmentStatus: "", sector: "" },
+    email: "",
+    guarantor: { firstName: "", lastName: "", phoneNumber: ""},
+    orgName: "",
+    phoneNumber: "",
+    userName: "",
+    socials: { facebook: "", instagram: "", twitter: "" },
+  });
+
+
+  
   const Tabs = [
     "General Details",
     "Documents",
@@ -21,23 +36,23 @@ const App=()=>{
   const PersonalInfo = [
     {
       title: "full Name",
-      detail: "Grace Effiom",
+      detail: userDetails.profile.firstName +" "+userDetails.profile.lastName,
     },
     {
       title: "Phone Number",
-      detail: "07060780922",
+      detail: userDetails.phoneNumber,
     },
     {
       title: "Email Address",
-      detail: "grace@gmail.com",
+      detail: userDetails.email,
     },
     {
       title: "Bvn",
-      detail: "07060780922",
+      detail: userDetails.profile.bvn,
     },
     {
       title: "Gender",
-      detail: "Female",
+      detail: userDetails.profile.gender,
     },
     {
       title: "Marital status",
@@ -56,15 +71,15 @@ const App=()=>{
    const Education = [
      {
        title: "level of education",
-       detail: "B.Sc",
+       detail: userDetails.education.level,
      },
      {
        title: "employment status",
-       detail: "Employed",
+       detail: userDetails.education.employmentStatus,
      },
      {
        title: "sector of employment",
-       detail: "FinTech",
+       detail: userDetails.education.sector,
      },
      {
        title: "Duration of employment",
@@ -72,7 +87,7 @@ const App=()=>{
      },
      {
        title: "office email",
-       detail: "grace@lendsqr.com",
+       detail: userDetails.email,
      },
      {
        title: "Monthly income",
@@ -87,15 +102,15 @@ const App=()=>{
    const Socials = [
      {
        title: "Twitter",
-       detail: "@grace_effiom",
+       detail: userDetails.socials.twitter,
      },
      {
        title: "Facebook",
-       detail: "Grace Effiom",
+       detail: userDetails.socials.facebook,
      },
      {
        title: "Instagram",
-       detail: "@grace_effiom",
+       detail: userDetails.socials.instagram,
      },
     
    ];
@@ -103,25 +118,29 @@ const App=()=>{
    const Guarantor = [
      {
        title: "full Name",
-       detail: "Debby Ogana",
+       detail: userDetails.guarantor.firstName+" "+userDetails.guarantor.lastName,
      },
      {
        title: "Phone Number",
-       detail: "07060780922",
+       detail: userDetails.guarantor.phoneNumber,
      },
      {
        title: "Email Address",
-       detail: "debby@gmail.com",
+       detail: userDetails.email,
      },
      {
        title: "Relationship",
        detail: "Sister",
      },
    ];
+   useEffect(() => {
+     let x = JSON.parse(localStorage["user"]);
+     setUserDetails(x);
+   }, []);
     return (
       <div className=" w-full py-20 lg:p-8">
         <div className="cursor-pointer mb-10">
-          <Link to="./dashboard" className="flex items-center">
+          <Link to="/dashboard" className="flex items-center">
             <img alt="" src={Back} className="" />
             <h2 className="sec mx-3">Back to Users</h2>
           </Link>
@@ -149,7 +168,7 @@ const App=()=>{
           </div>
         </div>
         <div className="my-8">
-          <Details />
+          <Details  userDetails={userDetails}/>
         </div>
         <div
           style={{

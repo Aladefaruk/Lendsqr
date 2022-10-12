@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import Avatar from "../assets/avatar.svg";
 import FilledStar from "../assets/filledStar.svg";
 import Star from "../assets/star.svg";
 
-const User = () => {
+const User = ({userDetails}:{userDetails:any}) => {
   const [tabNo, setTabNo] = useState(0);
+  
+
+ 
   const Tabs = [
     "General Details",
     "Documents",
@@ -21,6 +24,9 @@ const User = () => {
   const inactiveStyle = {
     color: "black",
   };
+
+  
+  
   return (
     <div
       className="w-full px-5 pt-3 "
@@ -34,14 +40,14 @@ const User = () => {
     >
       <div className="flex flex-wrap mb-12">
         <div className="flex">
-        <div className="flex items-center mx-5">
-          <img src={Avatar} alt="" />
+        <div className="flex items-center mx-5 ">
+          <img src={userDetails.profile.avatar} alt=""   style={{borderRadius:"100%"}}/>
           <div className="mx-5">
             <h2 className="font-semibold pri " style={{ fontSize: "22px" }}>
-              Grace Effiom
+              {userDetails.profile.firstName +" "+ userDetails.profile.lastName}
             </h2>
             <p className="sec" style={{ fontSize: "14px" }}>
-              LSQFf587g90
+              {userDetails.accountNumber}
             </p>
           </div>
           </div>
@@ -68,7 +74,7 @@ const User = () => {
         </div>
         <div className="items-center my-5 mx-7">
           <p className="font-semibold pri " style={{ fontSize: "22px" }}>
-            ₦200,000.00
+            ₦{userDetails.accountBalance}
           </p>
           <p className="sec" style={{ fontSize: "14px" }}>
             9912345678/Providus Bank
