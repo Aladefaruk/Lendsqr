@@ -1,13 +1,13 @@
-import React from 'react'
-import { Link } from 'react-router-dom';
-import { Headers } from '../../assets/Headers/index'
+import React from "react";
+import { Link } from "react-router-dom";
+import { Headers } from "../../assets/Headers/index";
 
 export default function HeaderLG() {
   return (
     <div className="w-full flex justify-between items-center headerContainer px-7 py-8 fixed z-10">
       <div className="w-1/2 flex justify-between">
         <Link to="/">
-        <img src={Headers.Logo} alt="" />
+          <img src={Headers.Logo} alt="" className="cursor-pointer" />
         </Link>
         <div className="flex w-1/2">
           <input
@@ -20,7 +20,7 @@ export default function HeaderLG() {
             }}
           />
           <span
-            className="w-1/5 headerInput item-center items-center sec "
+            className="w-1/5 headerInput item-center cursor-pointer items-center sec "
             style={{
               borderRadius: "0 8px 8px 0",
 
@@ -43,22 +43,18 @@ export default function HeaderLG() {
         </div>
       </div>
 
-      <div className="w-2/6 flex justify-evenly items-center">
+      <div className="w-2/6 flex justify-evenly items-center ">
         <div
           style={{ fontSize: "16px", textDecoration: "underline" }}
-          className="pri"
+          className="pri cursor-pointer"
         >
-          Docs  
+          Docs
         </div>
-        <img src={Headers.Bell} alt="bell"  />
-        <div className="flex items-center justify-center">
-          <img
-            src={Headers.ProfilePicture}
-            alt="profile"
-            
-          />
+        <img src={Headers.Bell} alt="bell" className="cursor-pointer" />
+        <div className="flex items-center justify-center cursor-pointer">
+          <img src={Headers.ProfilePicture} alt="profile" />
           <h1 className="mx-2 pri font-semibold"> Adedeji</h1>
-          <img src={Headers.DropDown}  alt=""/>
+          <img src={Headers.DropDown} alt="" />
         </div>
       </div>
     </div>

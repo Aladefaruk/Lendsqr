@@ -1,7 +1,14 @@
 import React from "react";
 
-
-export default function Box({ name, image, numbers }:{name:string,image:string,numbers:number}) {
+export default function Box({
+  name,
+  image,
+  numbers,
+}: {
+  name: string;
+  image: string;
+  numbers: number;
+}) {
   return (
     <div
       style={{

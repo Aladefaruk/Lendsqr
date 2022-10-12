@@ -1,4 +1,4 @@
-import Bell from "./bell.svg";
+import Bell from "./bell.png";
 import DropDown from "./dropDown.svg";
 import Logo from "./logo.svg";
 import ProfilePicture from "./profilePicture.svg";

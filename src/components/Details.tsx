@@ -1,13 +1,11 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Avatar from "../assets/avatar.svg";
 import FilledStar from "../assets/filledStar.svg";
 import Star from "../assets/star.svg";
 
-const User = ({userDetails}:{userDetails:any}) => {
+const User = ({ userDetails }: { userDetails: any }) => {
   const [tabNo, setTabNo] = useState(0);
-  
 
- 
   const Tabs = [
     "General Details",
     "Documents",
@@ -25,8 +23,6 @@ const User = ({userDetails}:{userDetails:any}) => {
     color: "black",
   };
 
-  
-  
   return (
     <div
       className="w-full px-5 pt-3 "
@@ -40,16 +36,22 @@ const User = ({userDetails}:{userDetails:any}) => {
     >
       <div className="flex flex-wrap mb-12">
         <div className="flex">
-        <div className="flex items-center mx-5 ">
-          <img src={userDetails.profile.avatar} alt=""   style={{borderRadius:"100%"}}/>
-          <div className="mx-5">
-            <h2 className="font-semibold pri " style={{ fontSize: "22px" }}>
-              {userDetails.profile.firstName +" "+ userDetails.profile.lastName}
-            </h2>
-            <p className="sec" style={{ fontSize: "14px" }}>
-              {userDetails.accountNumber}
-            </p>
-          </div>
+          <div className="flex items-center mx-5 ">
+            <img
+              src={userDetails.profile.avatar}
+              alt=""
+              style={{ borderRadius: "100%" }}
+            />
+            <div className="mx-5">
+              <h2 className="font-semibold pri " style={{ fontSize: "22px" }}>
+                {userDetails.profile.firstName +
+                  " " +
+                  userDetails.profile.lastName}
+              </h2>
+              <p className="sec" style={{ fontSize: "14px" }}>
+                {userDetails.accountNumber}
+              </p>
+            </div>
           </div>
         </div>
         <div

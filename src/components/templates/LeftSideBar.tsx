@@ -1,15 +1,13 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 
-import Switch from '../../assets/template/switch.svg';
-import Drop from '../../assets/template/shuffDrop.svg';
-import Dash from '../../assets/template/dashboard.svg';
+import Switch from "../../assets/template/switch.svg";
+import Drop from "../../assets/template/shuffDrop.svg";
+import Dash from "../../assets/template/dashboard.svg";
 import Tab from "./Tab";
-import {Customers, Business,Settings} from '../../assets/template/index';
-
+import { Customers, Business, Settings } from "../../assets/template/index";
 
 const LeftSide = () => {
-
-  const [tabNo, setTabNo]=useState(0)
+  const [tabNo, setTabNo] = useState(0);
   return (
     <div
       className="fixed  left-0 h-full left-side pt-36  items-left hidden lg:block"
@@ -31,7 +29,14 @@ const LeftSide = () => {
           <img src={Drop} alt="dropdown" />
         </div>
         <div className="mb-11">
-          <Tab image={Dash} name="Dashboard" active={tabNo} key={100} index={100} onClick={()=>console.log('100')}/>
+          <Tab
+            image={Dash}
+            name="Dashboard"
+            active={tabNo}
+            key={100}
+            index={100}
+            onClick={() => console.log("100")}
+          />
         </div>
       </div>
 

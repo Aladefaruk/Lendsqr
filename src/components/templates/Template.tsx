@@ -1,10 +1,9 @@
-import React from 'react'
-import LeftSide from './LeftSideBar';
-import HeaderLG from './HeaderLG';
-import HeaderSM from './HeaderSM';
+import React from "react";
+import LeftSide from "./LeftSideBar";
+import HeaderLG from "./HeaderLG";
+import HeaderSM from "./HeaderSM";
 
-
-const Template=({App}:{App:Function})=> {
+const Template = ({ App }: { App: Function }) => {
   return (
     <div className="">
       <div className="block">
@@ -14,21 +13,20 @@ const Template=({App}:{App:Function})=> {
         <div className=" block lg:hidden">
           <HeaderSM />
           <div>
-            <App/>
+            <App />
           </div>
         </div>
         <div className="hidden lg:block w-full h-full">
           <div className="block w-full left-side">
             <LeftSide />
           </div>
-          
+
           <div className="other-side pt-28">
-              <App />
-          
+            <App />
           </div>
         </div>
       </div>
     </div>
   );
-}
-export default Template
+};
+export default Template;

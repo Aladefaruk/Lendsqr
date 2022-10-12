@@ -1,63 +1,65 @@
-import React, { useEffect,useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import Box from "../components/Box";
 import { Statistics } from "../assets/statistics/index";
 import Template from "../components/templates/Template";
 import { Link } from "react-router-dom";
-import { Space, Table, Popover, Menu,Dropdown } from "antd";
+import { Space, Table, Popover, Menu, Dropdown, Select } from "antd";
 import type { ColumnsType } from "antd/es/table";
-import FilterIcon from '../assets/filter.svg';
+import FilterIcon from "../assets/filter.svg";
 import KebabIcon from "../assets/kebab.svg";
 import ViewIcon from "../assets/view.svg";
 import BlacklistIcon from "../assets/blacklist.svg";
 import Drop from "../assets/template/shuffDrop.svg";
-import ActivateIcon from "../assets/activate.svg"
+import ActivateIcon from "../assets/activate.svg";
 import "antd/dist/antd.css";
 import Moment from "react-moment";
 
 const App = () => {
-  const [allUsers,setAllUsers]= useState([])
-  const [pageSizeNo, setPageSizeNo]=useState(1)
-    interface DataType {
-      // key: string;
-      org: any;
-      userName: string;
-      email: string;
-      phone: string;
-      date: string;
-      // tags: string[];
-    }
+  const [allUsers, setAllUsers] = useState([]);
+  const [pageSizeNo, setPageSizeNo] = useState(1);
+  const [modal, setModal] = useState(false);
+
+  const ref = useRef();
+  interface DataType {
+    // key: string;
+    org: any;
+    userName: string;
+    email: string;
+    phone: string;
+    date: string;
+    // tags: string[];
+  }
 
   const inactiveStyle = {
     background: "rgba(84, 95, 125, 0.06)",
     color: "rgba(84, 95, 125, 1)",
     borderRadius: "100px",
-    fontSize:"14px"
+    fontSize: "14px",
   };
-   const pendingStyle = {
-     background: "rgba(233, 178, 0, 0.1)",
-     color: "rgba(233, 178, 0, 1)",
-     borderRadius: "100px",
-   };
-   const activeStyle = {
-     background: "rgba(57, 205, 98, 0.06)",
-     color: "rgba(57, 205, 98, 1)",
-     borderRadius: "100px",
-   };
-    const disabledStyle = {
-      background: "rgba(228, 3, 59, 0.06)",
-      color: "rgba(228, 3, 59, 1)",
-      borderRadius: "100px",
-    };
+  const pendingStyle = {
+    background: "rgba(233, 178, 0, 0.1)",
+    color: "rgba(233, 178, 0, 1)",
+    borderRadius: "100px",
+  };
+  const activeStyle = {
+    background: "rgba(57, 205, 98, 0.06)",
+    color: "rgba(57, 205, 98, 1)",
+    borderRadius: "100px",
+  };
+  const disabledStyle = {
+    background: "rgba(228, 3, 59, 0.06)",
+    color: "rgba(228, 3, 59, 1)",
+    borderRadius: "100px",
+  };
 
-    const content = (props:string)=>{
-      
-      return (
-        <div className="rounded-lg sec font-semibold cursor-pointer">
-          <Link
-            to={`/user:${props["id"]}`}
-            className="sec"
-            onClick={() => localStorage.setItem('user',JSON.stringify(props))}
-          >
+  const content = (props: string) => {
+    return (
+      <div className="rounded-lg sec font-semibold cursor-pointer">
+        <Link
+          to={`/user:${props["id"]}`}
+          className="sec"
+          onClick={() => localStorage.setItem("user", JSON.stringify(props))}
+        >
           <div
             className="flex items-center "
             // onClick={() => localStorage.setItem("user", props)}
@@ -65,37 +67,37 @@ const App = () => {
             <img src={ViewIcon} alt="" />
             <span className="mx-3">View Details</span>
           </div>
-          </Link>
-          <div className="flex items-center my-2">
-            <img src={BlacklistIcon} alt="" />
-            <span className="mx-3">Blacklist User</span>
-          </div>
-          <div className="flex items-center ">
-            <img src={ActivateIcon} alt="" />
-            <span className="mx-3">Activate User</span>
-          </div>
+        </Link>
+        <div className="flex items-center my-2">
+          <img src={BlacklistIcon} alt="" />
+          <span className="mx-3">Blacklist User</span>
         </div>
-      );
-  }
+        <div className="flex items-center ">
+          <img src={ActivateIcon} alt="" />
+          <span className="mx-3">Activate User</span>
+        </div>
+      </div>
+    );
+  };
 
-
-  let UsersData=allUsers.map((user:string)=>
-  {
+  let UsersData = allUsers.map((user: string) => {
     return {
-    org:user['orgName'],
-    userName:user['userName'],
-    email:user['email'],
-    phone:user['phoneNumber'],
-    date:user['lastActiveDate'],
-    fullUserData:user
-  }})
-
-
+      org: user["orgName"],
+      userName: user["userName"],
+      email: user["email"],
+      phone: user["phoneNumber"],
+      date: user["lastActiveDate"],
+      fullUserData: user,
+    };
+  });
 
   const columns: ColumnsType<DataType> = [
     {
       title: (
-        <span className="flex uppercase ">
+        <span
+          className="flex uppercase cursor-pointer"
+          onClick={() => setModal(!modal)}
+        >
           <span className="sec">Organization</span>{" "}
           <img src={FilterIcon} alt="" className="mx-2" />
         </span>
@@ -106,7 +108,7 @@ const App = () => {
     },
     {
       title: (
-        <span className="flex uppercase ">
+        <span className="flex uppercase " onClick={() => setModal(!modal)}>
           <span className="sec">Username</span>{" "}
           <img src={FilterIcon} alt="" className="mx-2" />
         </span>
@@ -117,7 +119,7 @@ const App = () => {
     },
     {
       title: (
-        <span className="flex uppercase ">
+        <span className="flex uppercase " onClick={() => setModal(!modal)}>
           <span className="sec">Email</span>{" "}
           <img src={FilterIcon} alt="" className="mx-2" />
         </span>
@@ -128,7 +130,7 @@ const App = () => {
     },
     {
       title: (
-        <span className="flex uppercase ">
+        <span className="flex uppercase " onClick={() => setModal(!modal)}>
           <span className="sec">PHONE NUMBER</span>{" "}
           <img src={FilterIcon} alt="" className="mx-2" />
         </span>
@@ -139,7 +141,7 @@ const App = () => {
     },
     {
       title: (
-        <span className="flex uppercase ">
+        <span className="flex uppercase " onClick={() => setModal(!modal)}>
           <span className="sec">Date joined</span>{" "}
           <img src={FilterIcon} alt="" className="mx-2" />
         </span>
@@ -155,9 +157,8 @@ const App = () => {
     },
     {
       title: (
-        <span className="flex uppercase ">
+        <span className="flex uppercase " onClick={() => setModal(!modal)}>
           <span className="sec">Status</span>{" "}
-          
           <img src={FilterIcon} alt="" className="mx-2" />
         </span>
       ),
@@ -185,28 +186,21 @@ const App = () => {
               ? "Pending"
               : "Blacklisted"}
           </div>
-                <Popover placement="bottomRight"  content={content(record['fullUserData'])} trigger="click">
-
-          <img src={KebabIcon} alt="" className="w-6 h-6" />
+          <Popover
+            placement="bottomRight"
+            content={content(record["fullUserData"])}
+            trigger="click"
+          >
+            <img src={KebabIcon} alt="" className="w-6 h-6 cursor-pointer" />
           </Popover>
         </Space>
       ),
     },
   ];
 
-
-  const list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((no:number) => {
-    return ({
-      key:  no,
-      label: <p onClick={() => handle(no)}>{no * 10}</p>,
-    });
-  });
-  const menu=(<Menu items={[...list]}/>)
-
-  const handle=(props:number)=>{
-    setPageSizeNo(props)
-  }
-      
+  const handle = (props: number) => {
+    setPageSizeNo(props);
+  };
 
   const getAllUsers = async () => {
     try {
@@ -218,17 +212,18 @@ const App = () => {
         }
       );
       const res_json = await res.json();
-      
+
       if (!res.ok) {
-        return console.log(res)
+        return console.log(res);
       }
-      setAllUsers(res_json)
+      setPageSizeNo(1);
+      setAllUsers(res_json);
+      
       
     } catch (error) {
       console.log(error);
     }
   };
-  // console.log(process.env.REACT_APP_API_KEY);
 
   useEffect(() => {
     getAllUsers();
@@ -243,7 +238,7 @@ const App = () => {
       </h1>
 
       <div className="flex flex-wrap justify-around">
-        {Object.values(Statistics).map((stat: Object, index: Number) => (
+        {Object.values(Statistics).map((stat: Object, index: number) => (
           <Box
             key={index}
             name={stat["name"]}
@@ -257,6 +252,7 @@ const App = () => {
           columns={columns}
           dataSource={UsersData}
           scroll={{ x: "700" }}
+          size="small"
           pagination={{
             defaultPageSize: 10,
             defaultCurrent: pageSizeNo,
@@ -265,18 +261,122 @@ const App = () => {
           }}
           className="w-full"
         />
-        <div
-          className="p-5 absolute bottom-2 w-1/5 rounded-lg"
-          style={{
-            background: "#fff",
-            bottom: "88%",
-            boxSizing: "border-box",
-            boxShadow: " 3px 5px 20px rgba(0, 0, 0, 0.04)",
-            border: "1px solid rgba(84, 95, 125, 0.14)",
-          }}
-        >
-          dkkdddd
-        </div>
+        {modal && (
+          <div
+            className="p-5 mx-2 absolute top-14 lg:bottom-60 w-full lg:w-2/6 rounded-lg"
+            style={{
+              background: "#fff",
+
+              boxSizing: "border-box",
+              boxShadow: " 3px 5px 20px rgba(0, 0, 0, 0.04)",
+              border: "1px solid rgba(84, 95, 125, 0.14)",
+            }}
+          >
+            <div className="mb-5">
+              <label className="text-md sec font-semibold mb-2">
+                Organization
+              </label>
+              <br />
+              <select
+                name="something"
+                id="something"
+                placeholder="org"
+                className="w-full px-3 sec py-1 rounded-lg cursor-pointer"
+                style={{
+                  border: "1px solid rgba(33, 63, 125, 0.2)",
+                  outline: "none",
+                }}
+              >
+                <option selected className="sec">
+                  Organization
+                </option>
+              </select>
+            </div>
+            <div className="mb-5">
+              <label className="sec font-semibold mb-2">Username</label>
+              <br />
+              <input
+                type="text"
+                className="w-full px-2 py-1 rounded-lg"
+                placeholder="User"
+                style={{
+                  border: "1px solid rgba(33, 63, 125, 0.2)",
+                  outline: "none",
+                }}
+              />
+            </div>
+            <div className="mb-5">
+              <label className="sec font-semibold mb-2">Email</label>
+              <br />
+              <input
+                type="text"
+                placeholder="Email"
+                className="w-full px-2 py-1 rounded-lg"
+                style={{
+                  border: "1px solid rgba(33, 63, 125, 0.2)",
+                  outline: "none",
+                }}
+              />
+            </div>
+            <div className="mb-5">
+              <label className="sec font-semibold mb-2">Date</label>
+              <br />
+              <input
+                type="date"
+                className="w-full px-2 py-1 rounded-lg cursor-pointer"
+                style={{
+                  border: "1px solid rgba(33, 63, 125, 0.2)",
+                  outline: "none",
+                }}
+              />
+            </div>
+            <div className="mb-5">
+              <label className="sec font-semibold mb-2">Phone Number</label>
+              <br />
+              <input
+                type="text"
+                placeholder="Phone Number"
+                className="w-full px-2 py-1 rounded-lg"
+                style={{
+                  border: "1px solid rgba(33, 63, 125, 0.2)",
+                  outline: "none",
+                }}
+              />
+            </div>
+            <div className="mb-5">
+              <label className="sec font-semibold mb-2">Select</label>
+              <br />
+              <select
+                name="something"
+                id="something"
+                className="w-full  sec px-3 py-1 rounded-lg cursor-pointer"
+                style={{
+                  border: "1px solid rgba(33, 63, 125, 0.2)",
+                  outline: "none",
+                }}
+              >
+                {" "}
+                <option selected className="sec">
+                  Select
+                </option>
+              </select>
+            </div>
+            <div className="flex justify-around w-full ">
+              <button
+                style={{ border: "1px solid #545F7D" }}
+                className="sec p-2 rounded-lg w-3/5 mx-2"
+              >
+                Rest
+              </button>
+              <button
+                style={{ background: "#39CDCC" }}
+                className=" text-white p-2 rounded-lg w-3/5 mx-2"
+              >
+                Filter
+              </button>
+            </div>
+          </div>
+        )}
         <div className="sec items-center absolute bottom-3 hidden lg:flex">
           Showing {/* <Dropdown overlay={menu} placement="bottomLeft"> */}
           <span

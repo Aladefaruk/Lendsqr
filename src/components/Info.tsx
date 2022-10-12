@@ -1,6 +1,6 @@
-import React from 'react'
+import React from "react";
 
- const Info=({topic,detail}:{topic:string,detail:string})=> {
+const Info = ({ topic, detail }: { topic: string; detail: string }) => {
   return (
     <div className="mx-10 my-5 sec">
       <p className=" my-3 uppercase" style={{ fontSize: "12px" }}>
@@ -11,6 +11,6 @@ import React from 'react'
       </p>
     </div>
   );
-}
+};
 
-export default Info
+export default Info;

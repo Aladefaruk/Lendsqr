@@ -1,10 +1,10 @@
-import React from 'react'
-import Logo from '../../assets/Logo.svg'
-import HeroImage from '../../assets/Hero.svg'
-import '../../App.scss'
-import { Link } from 'react-router-dom'
+import React from "react";
+import Logo from "../../assets/Logo.svg";
+import HeroImage from "../../assets/Hero.svg";
+import "../../App.scss";
+import { Link } from "react-router-dom";
 
-const Signin=()=> {
+const Signin = () => {
   return (
     <div className="w-full ave flex flex-wrap pt-20 mx-auto ">
       <div className="w-full lg:w-1/2">
@@ -17,7 +17,7 @@ const Signin=()=> {
         <div className="w-full ">
           <div className="mb-10 ">
             <h2
-              style={{ fontSize: "40px", color: "#213F7D" ,fontWeight:"700" }}
+              style={{ fontSize: "40px", color: "#213F7D", fontWeight: "700" }}
               className="font-bold aveb "
             >
               Welcome!
@@ -25,13 +25,17 @@ const Signin=()=> {
             <h4 className="pt-5 pb-6 sec">Enter details to login.</h4>
           </div>
           <div className="w-full lg:w-4/5">
-            <input type="text" className="w-full inputstyle" placeholder='Email' />
+            <input
+              type="text"
+              className="w-full inputstyle"
+              placeholder="Email"
+            />
             <br />
             <div className="">
               <div className="flex my-5">
                 <input
                   type="password"
-                  placeholder='Password'
+                  placeholder="Password"
                   className="inputstyle w-full lg:w-5/6  rounded-lg"
                   style={{ borderRight: "0px", borderRadius: "5px 0 0 5px" }}
                 />
@@ -40,8 +44,8 @@ const Signin=()=> {
                     borderLeft: "0px",
                     borderRadius: "0 5px 5px 0",
                     color: "#39CDCC",
-                    verticalAlign:"center",
-                    fontSize:"12px"
+                    verticalAlign: "center",
+                    fontSize: "12px",
                   }}
                   className=" w-2/6 lg:w-1/5 inputstyle cursor-pointer text-center rounded-lg px-5 tert"
                 >
@@ -52,17 +56,17 @@ const Signin=()=> {
             </div>
           </div>
           <Link to="/dashboard">
-          <button
-            className=" w-full lg:w-4/5 my-5 p-3 rounded-lg text-white "
-            style={{ background: "#39CDCC",outline:"none" }}
-          >
-            LOG IN
-          </button>
+            <button
+              className=" w-full lg:w-4/5 my-5 p-3 rounded-lg text-white "
+              style={{ background: "#39CDCC", outline: "none" }}
+            >
+              LOG IN
+            </button>
           </Link>
         </div>
       </div>
     </div>
   );
-}
+};
 
-export default Signin
+export default Signin;
