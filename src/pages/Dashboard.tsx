@@ -3,18 +3,20 @@ import Box from "../components/Box";
 import { Statistics } from "../assets/statistics/index";
 import Template from "../components/templates/Template";
 import { Link } from "react-router-dom";
-import { Space, Table, Tag, Button, Popover } from "antd";
+import { Space, Table, Popover, Menu,Dropdown } from "antd";
 import type { ColumnsType } from "antd/es/table";
 import FilterIcon from '../assets/filter.svg';
 import KebabIcon from "../assets/kebab.svg";
 import ViewIcon from "../assets/view.svg";
 import BlacklistIcon from "../assets/blacklist.svg";
+import Drop from "../assets/template/shuffDrop.svg";
 import ActivateIcon from "../assets/activate.svg"
 import "antd/dist/antd.css";
 import Moment from "react-moment";
 
 const App = () => {
   const [allUsers,setAllUsers]= useState([])
+  const [pageSizeNo, setPageSizeNo]=useState(1)
     interface DataType {
       // key: string;
       org: any;
@@ -193,6 +195,19 @@ const App = () => {
   ];
 
 
+  const list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((no:number) => {
+    return ({
+      key:  no,
+      label: <p onClick={() => handle(no)}>{no * 10}</p>,
+    });
+  });
+  const menu=(<Menu items={[...list]}/>)
+
+  const handle=(props:number)=>{
+    setPageSizeNo(props)
+  }
+      
+
   const getAllUsers = async () => {
     try {
       const res = await fetch(
@@ -220,32 +235,60 @@ const App = () => {
   }, []);
   return (
     <div className="w-full h-full my-20 lg:my-10">
-    
-        <h1
-          className="pri font-semibold mx-5 text-center lg:text-left"
-          style={{ fontSize: "24px" }}
-        >
-          Users
-        </h1>
-      
+      <h1
+        className="pri font-semibold mx-5 text-center lg:text-left"
+        style={{ fontSize: "24px" }}
+      >
+        Users
+      </h1>
+
       <div className="flex flex-wrap justify-around">
         {Object.values(Statistics).map((stat: Object, index: Number) => (
           <Box
-            name={stat['name']}
-            image={stat['image']}
-            numbers={stat['stats']}
             key={index}
+            name={stat["name"]}
+            image={stat["image"]}
+            numbers={stat["stats"]}
           />
         ))}
       </div>
-      <div className="lg:mx-5">
+      <div className="lg:mx-5 relative">
         <Table
           columns={columns}
           dataSource={UsersData}
-          scroll={{ x:"700" }}
-         
+          scroll={{ x: "700" }}
+          pagination={{
+            defaultPageSize: 10,
+            defaultCurrent: pageSizeNo,
+            showSizeChanger: false,
+            onChange: (page: number, pageSize: number) => handle(page),
+          }}
           className="w-full"
         />
+        <div
+          className="p-5 absolute bottom-2 w-1/5 rounded-lg"
+          style={{
+            background: "#fff",
+            bottom: "88%",
+            boxSizing: "border-box",
+            boxShadow: " 3px 5px 20px rgba(0, 0, 0, 0.04)",
+            border: "1px solid rgba(84, 95, 125, 0.14)",
+          }}
+        >
+          dkkdddd
+        </div>
+        <div className="sec items-center absolute bottom-3 hidden lg:flex">
+          Showing {/* <Dropdown overlay={menu} placement="bottomLeft"> */}
+          <span
+            className="sec font-semibold p-1 mx-2 rounded-lg flex w-16 cursor-pointer"
+            style={{ background: "rgba(33, 63, 125, 0.1" }}
+          >
+            <span className="mx-2">{pageSizeNo * 10}</span>
+            <img alt="" src={Drop} />
+          </span>
+          {/* </Dropdown> */}
+          out of {UsersData.length}
+        </div>
       </div>
     </div>
   );

@@ -11,7 +11,7 @@ export default function Box({ name, image, numbers }:{name:string,image:string,n
         boxShadow: "3px 5px 20px rgba(0, 0, 0, 0.04)",
         borderRadius: "4px",
       }}
-      className="py-5 px-6 my-6"
+      className="py-0 lg:py-5 px-6 my-6 items-center flex flex-col justify-center"
     >
       <img alt="" src={image} />
 
